@@ -26,8 +26,11 @@ Using the power of Jinja2, we can create a template that dynamically outputs htm
 {{ form.cnp_string.data[5:7]}}-{{ luna[form.cnp_string.data[3:5]] }}-{{ status[form.cnp_string.data[0] |int ][2] }}{{ form.cnp_string.data[1:3] }}
 ```
 `dd` is extracted from CNP itself (CNP is the data stored as a string received from a form that was given to a variable called `cnp_string`, defined as a CNPForm class: `form.cnp_string.data`) and represents the 6th and 7th characters.
+
 `month` is extracted from a dictionary called `luna` that stores in "key":"value" pairs the months of the year, and it takes as a "key" the 4th and 5th characters of the CNP string (basically that's the month in `mm` format) and returns the name of the month corresponding.
+
 `yyyy` is a bit tricky, as only the last 2 digits are extracted from the CNP string - the 2nd and 3rd characters. The first two characters are extracted from the status dictionary, based on the first character of the CNP (`form.cnp_string.data[0]`) - but because is a string and the "key" in this case is an integer, we need to change it, using `| int` - and we need to iterate the "value" returned from dict, as the first two digits are stored in a tuple as the third value: `status[form.cnp_string.data[0] |int ][2]`
+
 If you did check the source of the page, you might've seen a hidden paragraph that shows the date of birth in "mm/dd/yyyy" format. It is there just for calculating age using a JS snippet located in `custom.js`.
 
 ## Conclusion
