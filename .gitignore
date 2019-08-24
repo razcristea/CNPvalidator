@@ -1,3 +1,11 @@
+# Files in dump_files, database and xml
+dump_files/
+*.db
+*.xml
+
+# MacOS
+.DS_Store
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
