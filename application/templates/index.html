@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% block body %}
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <div class="formwrapper">
+        <h3 class="display-5 pt-4">Validare CNP</h3>
+        <form method="POST" action="{{ url_for('index') }}">
+          {% if form.errors %}
+            {% for error in form.cnp_string.errors %}
+              <p class="error">{{ error }}</p>
+            {% endfor %}
+          {% endif %}
+          <div class="form-group">
+            {{ form.cnp_string(placeholder="Introduceti CNP-ul", class="form-control", autocomplete="off", pattern="[0-9]*", autofocus="autofocus") }}
+          </div>
+          <p class="lead">
+            <input type="submit" value="Valideaza" class="btn btn-success">
+          </p>
+          </form>
+      </div>
+        {# Start CNP is valid part. This will show up only if the cnp is valid #}
+        {% if CNP_valid %}
+        <div class="results">
+          <p>CNP-ul introdus {{ form.cnp_string.data }} este valid.</p>
+          <p>Sex - {{ status[form.cnp_string.data[0] | int ][0] }}.</p>
+          <p>Cetatean - {{ status[form.cnp_string.data[0] | int ][1] }}.</p>
+          <p>Data nasterii - {{ form.cnp_string.data[5:7]}}-{{ luna[form.cnp_string.data[3:5]] }}-{{ status[form.cnp_string.data[0] |int ][2] }}{{ form.cnp_string.data[1:3] }}</p>
+          <p hidden id="DOB">{{ form.cnp_string.data[3:5] }}/{{ form.cnp_string.data[5:7]}}/{{ status[form.cnp_string.data[0] |int ][2] }}{{ form.cnp_string.data[1:3] }}</p>
+          <p>Varsta - <span id="age"></span> ani.</p>
+          <p>Locul emiterii - {{ judet[form.cnp_string.data[7:9]] or "nu este disponibil pentru CNP-ul introdus"}}.</p>
+        </div>
+        {% endif %}
+        {# End CNP is valid part.#}
+    </div>
+  </div>
+{% endblock %}
