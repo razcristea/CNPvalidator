@@ -1,11 +1,13 @@
-# CNPvalidator
+<h1 align="center"> CNPvalidator</h>
 
 <p align="center">
   <img src="https://img.shields.io/github/repo-size/razcristea/CNPvalidator?color=green" /> <img src="https://img.shields.io/github/license/razcristea/CNPvalidator" /> <img src="https://img.shields.io/badge/python-3.7-green?logo=python&logoColor=white" /> <img src="https://img.shields.io/badge/debian-VPS-red?logo=debian&logoColor=white" /> <img src="https://img.shields.io/badge/Flask-framework-red?logo=flask&logoColor=white" />
 </p>
 
+<p align="center"><img src="http://www.razvancristea.ro/img/SS_cnp.png" href="http://www.razvancristea.ro/CNPvalidator" width="300px"/></p>
+
 ## Description
-CNPvalidator is a tool that checks the personal identification number and if valid, gives details about the person, such as date of birth, gender, and the county where this ID was generated for the first time.
+<a href="http://www.razvancristea.ro/CNPvalidator">CNPvalidator</a> is a tool that checks the romanian personal identification number and if valid, gives details about the person, such as date of birth, gender, and the county where this ID was generated for the first time.
 
 ## Backend
 As a backend it is a Flask web app that uses mod_wsgi module to "talk" with the Apache web server that is hosted on a debian VPS. Server templating it's made using Jinja2 (included in Flask framework).
